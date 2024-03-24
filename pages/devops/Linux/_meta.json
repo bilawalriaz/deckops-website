@@ -1,0 +1,4 @@
+{
+  "setup": "Quickly set up a development VM",
+  "cron": "Use cron to run script automatically"
+}

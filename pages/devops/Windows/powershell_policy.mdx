@@ -1,0 +1,61 @@
+# Changing PowerShell Execution Policy
+
+By default, PowerShell's execution policy is set to "Restricted," which prevents the execution of PowerShell scripts. To allow a user to run any PowerShell script, you need to change the execution policy.
+
+## Changing the Execution Policy
+
+1. Open PowerShell as an administrator.
+
+2. To set the execution policy to "Unrestricted," run the following command:
+
+   ```powershell
+   Set-ExecutionPolicy Unrestricted
+   ```
+
+3. When prompted, type "Y" and press Enter to confirm the change.
+
+   ```
+   Execution Policy Change
+   The execution policy helps protect you from scripts that you do not trust. Changing the execution policy might expose you to the security risks described in the about_Execution_Policies help topic at https://go.microsoft.com/fwlink/?LinkID=135170. Do you want to change the execution policy?
+   [Y] Yes  [A] Yes to All  [N] No  [L] No to All  [S] Suspend  [?] Help (default is "N"): Y
+   ```
+
+4. Verify the new execution policy by running:
+
+   ```powershell
+   Get-ExecutionPolicy
+   ```
+
+   The output should be "Unrestricted."
+
+## Reverting the Execution Policy Change
+
+To revert the execution policy change and restore the default "Restricted" policy:
+
+1. Open PowerShell as an administrator.
+
+2. Run the following command:
+
+   ```powershell
+   Set-ExecutionPolicy Restricted
+   ```
+
+3. When prompted, type "Y" and press Enter to confirm the change.
+
+4. Verify the restored execution policy by running:
+
+   ```powershell
+   Get-ExecutionPolicy
+   ```
+
+   The output should be "Restricted."
+
+## Notes
+
+- Changing the execution policy to "Unrestricted" allows the execution of any PowerShell script, which can be a security risk. Only do this if you trust the scripts you intend to run.
+
+- Alternative execution policies, such as "RemoteSigned" or "AllSigned," provide more security by requiring scripts to be digitally signed by a trusted publisher.
+
+- The execution policy change affects the current user. To change the policy for all users, use the "-Scope" parameter followed by "LocalMachine" or "CurrentUser."
+
+Always exercise caution when running scripts from untrusted sources, and make sure to understand the implications of changing the PowerShell execution policy.

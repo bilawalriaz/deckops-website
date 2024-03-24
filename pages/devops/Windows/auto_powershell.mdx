@@ -1,0 +1,58 @@
+# Running a PowerShell Script Automatically Using Task Scheduler
+
+This guide will walk you through the process of setting up a PowerShell script to run automatically using the Windows Task Scheduler.
+
+## Prerequisites
+
+- A PowerShell script that you want to run automatically.
+- Administrative access to the Windows machine.
+
+## Steps
+
+1. Open the Task Scheduler:
+   - Press the Windows key + R to open the Run dialog.
+   - Type "taskschd.msc" and press Enter.
+
+2. Create a new task:
+   - In the Task Scheduler, click on "Create Task..." in the Actions pane on the right.
+   - Give your task a name and description in the "General" tab.
+
+3. Configure the trigger:
+   - Switch to the "Triggers" tab and click "New..."
+   - Choose the desired trigger type (e.g., Daily, Weekly, Monthly, or a specific date/time).
+   - Set the trigger settings according to your requirements and click "OK."
+
+4. Configure the action:
+   - Switch to the "Actions" tab and click "New..."
+   - In the "Action" dropdown, select "Start a program."
+   - In the "Program/script" field, enter "powershell.exe"
+   - In the "Add arguments (optional)" field, enter the following:
+     ```
+     -ExecutionPolicy Bypass -File "C:\Path\To\Your\Script.ps1"
+     ```
+     Replace "C:\Path\To\Your\Script.ps1" with the actual path to your PowerShell script.
+   - Click "OK" to save the action.
+
+5. Set additional settings (optional):
+   - In the "Conditions" tab, you can specify additional conditions for the task to run, such as only running when the computer is idle or when a network connection is available.
+   - In the "Settings" tab, you can configure additional settings, such as deleting the task if it is not scheduled to run again or running the task with the highest privileges.
+
+6. Save the task:
+   - Click "OK" to save the task.
+
+7. Test the task:
+   - Right-click on the newly created task and select "Run."
+   - Check if the PowerShell script executes as expected.
+
+## Modifying or Deleting the Task
+
+- To modify the task, double-click on it in the Task Scheduler Library and make the necessary changes in the task properties.
+- To delete the task, right-click on it and select "Delete."
+
+## Notes
+
+- Make sure the PowerShell script has the necessary permissions to run and that the user account under which the task runs has sufficient privileges to execute the script.
+- If the script requires administrative privileges, make sure to check the "Run with highest privileges" option in the "General" tab of the task properties.
+- Be cautious when running scripts automatically, as they may have unintended consequences if not properly tested and validated.
+
+By following these steps, you can set up a PowerShell script to run automatically using the Windows Task Scheduler, allowing you to automate various tasks and processes on your Windows machine.

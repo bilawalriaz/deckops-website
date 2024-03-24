@@ -1,0 +1,48 @@
+# Pushing to Multiple Git Remotes
+
+Quick guide on pushing a local repo to both GitHub and Gitea (or any other remote). Useful for backing up code or working with different teams.
+
+## Steps
+
+1. Create new repos on GitHub and Gitea
+   - Same repo name on both
+   - Configure settings as needed
+
+2. Add GitHub and Gitea as remotes in local repo
+   ```
+   git remote add github https://github.com/username/repo.git
+   git remote add gitea https://gitea-instance.com/username/repo.git
+   ```
+   Replace `username`, `repo`, and `gitea-instance.com` with your own
+
+3. Push local repo to both remotes
+   ```
+   git push github main
+   git push gitea main
+   ```
+   Use your default branch name if not `main`
+
+4. Double-check that the code is on both GitHub and Gitea
+
+## How it works
+
+Git lets you have multiple remotes, each with its own name. Adding GitHub and Gitea as separate remotes means you can push to both at the same time.
+
+`git push github main` sends commits from local `main` to `main` on the GitHub remote. Same for Gitea.
+
+Handy for keeping code synced across different platforms for backup, collaboration, or using features of each service.
+
+## Tips
+
+- Make sure to change `username`, `repo`, and `gitea-instance.com` to your actual values
+- If you already pushed to one remote before adding the other, you might need to do this the first time:
+  ```
+  git push --set-upstream gitea main
+  ```
+- To make life easier, create a Git alias to push to both remotes at once:
+  ```
+  git config --global alias.pushall '!git push github main && git push gitea main'
+  ```
+  Then just do `git pushall`
+
+And that's pretty much it! Now you can keep your code safe and synced on GitHub, Gitea, or any other remotes you want.
