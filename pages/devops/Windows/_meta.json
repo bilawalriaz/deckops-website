@@ -1,0 +1,4 @@
+{
+  "auto_powershell": "Run PowerShell scripts automatically",
+  "powershell_policy": "Change PowerShell Execution Policy"
+}

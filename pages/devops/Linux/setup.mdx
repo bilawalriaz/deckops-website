@@ -1,0 +1,43 @@
+# Create an Ubuntu Server 22.04 VM using VirtualBox
+
+This tutorial will guide you through the process of installing and setting up an Ubuntu Server 22.04 VM using VirtualBox, including the installation of guest tools.
+
+## Prerequisites
+
+- VirtualBox installed on your host machine
+- Ubuntu Server 22.04 ISO image downloaded
+
+## Steps
+
+1. Open VirtualBox and click on "New" to create a new virtual machine.
+2. Name the VM "Ubuntu Server 22.04" and choose "Linux" as the type and "Ubuntu (64-bit)" as the version. Click "Next".
+3. Allocate at least 2048 MB of RAM (more if available) and click "Next".
+4. Choose "Create a virtual hard disk now" and click "Create".
+5. Select "VDI (VirtualBox Disk Image)" and click "Next".
+6. Choose "Dynamically allocated" and click "Next".
+7. Allocate at least 20 GB of disk space and click "Create".
+8. Right-click on the newly created VM and select "Settings".
+9. In the "Storage" section, click on the "Empty" CD icon under "Controller: IDE" and select the Ubuntu Server 22.04 ISO image. Click "OK".
+10. Start the VM and follow the Ubuntu Server installation prompts.
+11. Once the installation is complete, reboot the VM and log in with your credentials.
+
+## Installing Guest Additions
+
+1. In the VirtualBox menu, click on "Devices" and select "Insert Guest Additions CD image".
+2. In the Ubuntu Server VM, run the following commands:
+
+   ```bash
+   sudo apt update
+   sudo apt install build-essential dkms linux-headers-$(uname -r)
+   sudo mount /dev/cdrom /media/cdrom
+   cd /media/cdrom
+   sudo ./VBoxLinuxAdditions.run
+   ```
+
+3. Reboot the VM for the changes to take effect:
+
+   ```bash
+   sudo reboot
+   ```
+
+Your Ubuntu Server 22.04 VM is now set up and ready to use, with guest tools installed for better performance and integration with the host machine.
