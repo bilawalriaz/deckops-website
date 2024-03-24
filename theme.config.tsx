@@ -11,9 +11,6 @@ const config: DocsThemeConfig = {
     link: 'https://discord.com/bilawalriaz',
   },
   docsRepositoryBase: 'https://deckops.dev',
-  footer: {
-    text: '© 2024 Deck/Ops',
-  },
   editLink: {component: null},
   feedback: {content: null},
 
@@ -34,7 +31,7 @@ const config: DocsThemeConfig = {
       </a>
       
     </span>
-  ) },
+  ) }
 
 }
 
