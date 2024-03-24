@@ -1,9 +1,16 @@
 import React from 'react'
 import { DocsThemeConfig } from 'nextra-theme-docs'
+import { useRouter } from 'next/router'
+import { useConfig } from 'nextra-theme-docs'
+
 
 const config: DocsThemeConfig = {
   logo: <span>Deck/Ops</span>,
-
+  useNextSeoProps() {
+    return {
+      titleTemplate: '%s – Deck/Ops'
+    }
+  },
   project: {
     link: 'https://github.com/bilawalriaz',
   },
@@ -31,7 +38,26 @@ const config: DocsThemeConfig = {
       </a>
       
     </span>
-  ) }
+  ) },
+
+  head: () => {
+    const { asPath, defaultLocale, locale } = useRouter()
+    const { frontMatter } = useConfig()
+    const url =
+      'https://deckops.bilawal.net' +
+      (defaultLocale === locale ? asPath : `/${locale}${asPath}`)
+ 
+    return (
+      <>
+        <meta property="og:url" content={url} />
+        <meta property="og:title" content={frontMatter.title || 'Deck/Ops'} />
+        <meta
+          property="og:description"
+          content={frontMatter.description || 'Making you a better dev'}
+        />
+      </>
+    )
+  }
 
 }
 
