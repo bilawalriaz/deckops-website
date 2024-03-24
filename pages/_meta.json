@@ -1,0 +1,13 @@
+{
+  "index": "Introduction",
+  "about": "About",
+  "deck": "Steam Deck",
+  "devops": "DevOps",
+  "python": "Python",
+  "contact": {
+    "title": "Contact ↗",
+    "type": "page",
+    "href": "https://bilawal.net",
+    "newWindow": true
+  }
+}
